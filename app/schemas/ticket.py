@@ -1,6 +1,7 @@
 from typing import Literal
 from pydantic import BaseModel, Field
 from pydantic import ConfigDict
+from datetime import datetime
 
 class TicketCreate(BaseModel):
     title:str
@@ -20,6 +21,7 @@ class TicketResponse(BaseModel):
     priority:Literal["low","medium","high"]
     status:Literal["open","in_progress","resolved"]
     assignee_email:str | None = None
+    created_at: datetime
 
 class SummarizeRequest(BaseModel):
     ticket_description: str = Field(min_length=10, max_length=5_000)
@@ -27,3 +29,8 @@ class SummarizeRequest(BaseModel):
 class SummarizeResponse(BaseModel):
     summary: str
     suggested_response: str
+
+
+
+
+    

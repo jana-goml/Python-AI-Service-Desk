@@ -13,10 +13,9 @@ from app.api.ai import router as ai_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-
     yield
 
-app = FastAPI(app_name="AI Service Desk",lifespan=lifespan)
+app = FastAPI(title="AI Service Desk", lifespan=lifespan)
 
 app.middleware("http")(response_time_middleware.response_time_middleware)
 app.add_middleware(CORSMiddleware,allow_origins=["*"],allow_credentials=True,allow_methods=["*"],allow_headers=["*"])

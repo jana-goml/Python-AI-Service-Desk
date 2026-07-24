@@ -2,6 +2,7 @@ from types import SimpleNamespace
 from unittest.mock import AsyncMock, patch
 import pytest
 from app.services import ticket_service
+from datetime import datetime, timezone
 
 @pytest.mark.asyncio
 async def test_create_ticket_happy_path(client):
@@ -11,6 +12,7 @@ async def test_create_ticket_happy_path(client):
         priority="high",
         status="open",
         assignee_email="admin@test.com",
+        created_at=datetime.now(timezone.utc)
     )
     with patch.object(ticket_service,"create_ticket",new_callable=AsyncMock) as mock_create:
         mock_create.return_value = created_mock

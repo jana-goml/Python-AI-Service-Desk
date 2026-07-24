@@ -30,3 +30,6 @@ async def update_ticket(db:AsyncSession,ticket:Ticket):
 async def delete_ticket(db:AsyncSession,ticket:Ticket):
     await db.delete(ticket)
     await db.commit()
+
+
+    

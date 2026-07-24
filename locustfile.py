@@ -18,9 +18,9 @@ class TicketApiUser(HttpUser):
             "/tickets",
             name="POST /tickets",
             json={
-                "title": "Load test ticket",
+                "title": "Application Error",
                 "priority": "medium",
-                "assignee_email": "test_user",
+                "assignee_email": "jyotsna@example.com",
             },
         )
  

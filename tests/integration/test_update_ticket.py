@@ -1,3 +1,4 @@
+from datetime import datetime, timezone
 from types import SimpleNamespace
 from unittest.mock import AsyncMock, patch
 import pytest
@@ -12,6 +13,7 @@ async def test_update_ticket_happy_path(client):
         priority="low",
         status="in_progress",
         assignee_email=None,
+        created_at=datetime.now(timezone.utc)
     )
     with patch.object(ticket_service,"update_ticket",new_callable=AsyncMock) as mock_update:
         mock_update.return_value = updated_mock
